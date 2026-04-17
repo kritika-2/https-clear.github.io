@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clear Glow</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#F8E1EC,#E6D9F2);
+    color: #2B2B2B;
+    overflow-x:hidden;
+}
+
+/* ================= WELCOME SCREEN ================= */
+
+#welcome-screen{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#7A1F3D,#C0547C,#E6D9F2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+    overflow:hidden;
+    animation:fadeOut 1.5s ease forwards;
+    animation-delay:3s;
+}
+
+.sparkles{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image:radial-gradient(white 1px, transparent 1px);
+    background-size:20px 20px;
+    animation: sparkleMove 4s linear infinite;
+    opacity:0.3;
+}
+
+@keyframes sparkleMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(-100px);}
+}
+
+.welcome-text{
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+    text-align:center;
+    color:white;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px #ffb6f9,
+        0 0 40px #ff69b4,
+        0 0 60px #C0547C;
+    animation: glowPulse 2s ease-in-out infinite alternate;
+    z-index:2;
+}
+
+.welcome-text span{
+    font-size:24px;
+    font-family:'Poppins', sans-serif;
+}
+
+@keyframes glowPulse{
+    from{transform:scale(1);}
+    to{transform:scale(1.05);}
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: linear-gradient(90deg,#7A1F3D,#C0547C);
+    padding: 20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+header h1{
+    font-family:'Playfair Display', serif;
+    font-size:32px;
+    letter-spacing:2px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
+}
+
+nav a i{
+    margin-right:8px;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:white;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    padding:60px 50px;
+    text-align:center;
+}
+
+.categories h2{
+    font-family:'Playfair Display', serif;
+    font-size:34px;
+    margin-bottom:40px;
+}
+
+.category-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.category{
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:20px;
+    transition:0.4s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.category:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.category img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.category p{
+    font-weight:600;
+    font-size:18px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    padding:60px 50px;
+    text-align:center;
+}
+
+.products h2{
+    font-family:'Playfair Display', serif;
+    font-size:34px;
+    margin-bottom:40px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+}
+
+.product{
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    transition:0.4s ease;
+    position:relative;
+}
+
+.product:hover{
+    transform:translateY(-15px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.2);
+}
+
+.product img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    margin-bottom:15px;
+}
+
+.product h3{
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.product p{
+    font-size:18px;
+    font-weight:600;
+    color:#C0547C;
+    margin-bottom:15px;
+}
+
+button{
+    background:linear-gradient(90deg,#C0547C,#7A1F3D);
+    color:white;
+    border:none;
+    padding:10px 25px;
+    border-radius:30px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    box-shadow:0 0 15px #C0547C;
+    transform:scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#7A1F3D;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+}
+/* ===== FIXED SEARCH BAR (Centered, No Layout Change) ===== */
+
+#fixed-search {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+}
+
+#fixed-search input {
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 220px;
+}
+
+#fixed-search button {
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: none;
+    margin-left: 5px;
+    background: linear-gradient(90deg,#C0547C,#7A1F3D);
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Visible Search Engine (No Layout Change) -->
+<div id="fixed-search">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="searchItems()">Search</button>
+</div>
+
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen">
+    <div class="sparkles"></div>
+    <h1 class="welcome-text">
+        WELCOME TO CLEAR GLOW <br>
+        <span>Get Ready For Perfect Glam </span>
+    </h1>
+</div>
+
+<header>
+    <h1>Clear Glow </h1>
+    <nav>
+        <ul>
+            <li><a href="https://www.amazon.com/beauty" target="_blank"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="https://www.nykaa.com" target="_blank"><i class="fas fa-store"></i>Shop</a></li>
+            <li><a href="https://www.sephora.com" target="_blank"><i class="fas fa-th-large"></i>Categories</a></li>
+            <li><a href="https://www.flipkart.com/beauty-and-grooming-store" target="_blank"><i class="fas fa-shopping-cart"></i>Cart</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-list">
+
+        <div class="category">
+            <a href="https://www.sephora.com/shop/makeup-cosmetics" target="_blank">
+                <img src="https://m.media-amazon.com/images/I/612vzpGnZ+L._AC_UF1000,1000_QL80_.jpg">
+                <p>Makeup</p>
+            </a>
+        </div>
+
+        <div class="category">
+            <a href="https://www.cetaphil.com/us/" target="_blank">
+                <img src="https://cdn.prod.website-files.com/61c44817190504d47e91cbc4/6940e869403833d18046c3d6_SKIN%20NEW%20COVER%20SLEEPING%20MASK.png">
+                <p>Skincare</p>
+            </a>
+        </div>
+
+        <div class="category">
+            <a href="https://www.lorealparisusa.com/hair-care" target="_blank">
+                <img src="https://t4.ftcdn.net/jpg/04/02/75/95/360_F_402759588_si9oFbEM4Tb60yHO5R2SfWrSLp2A5nYo.jpg">
+                <p>Haircare</p>
+            </a>
+        </div>
+
+        <div class="category">
+            <a href="https://www.nykaa.com/offers" target="_blank">
+                <img src="https://img.freepik.com/free-vector/valentine-s-day-sale-flat-design-with-50-off_23-2148795611.jpg?semt=ais_hybrid&w=740&q=80">
+                <p>Deals</p>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section class="products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+
+        <div class="product">
+            <a href="https://www.sephora.com/shop/lip-gloss" target="_blank">
+                <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/lip-gloss/4/h/n/10-glitter-pink-lip-gloss-lip-gloss-with-hot-pink-glitter-glossy-original-imah6ejcggag7gfm.jpeg?q=90">
+                <h3>GlitterGloss</h3>
+            </a>
+            <p>$499.00</p>
+            <a href="https://www.sephora.com/shop/lip-gloss" target="_blank">
+                <button>Add to Cart</button>
+            </a>
+        </div>
+
+        <div class="product">
+            <a href="https://www.cetaphil.com/us/" target="_blank">
+                <img src="https://i.ebayimg.com/images/g/3O8AAeSwtplo8KLL/s-l1200.webp">
+                <h3>Cetaphil</h3>
+            </a>
+            <p>$279.00</p>
+            <a href="https://www.cetaphil.com/us/" target="_blank">
+                <button>Add to Cart</button>
+            </a>
+        </div>
+
+        <div class="product">
+            <a href="https://www.ravelcare.com" target="_blank">
+                <img src="https://cdn.shopify.com/s/files/1/0554/6108/5286/files/Ravel06.jpg?v=1766590518">
+                <h3>RavelCare</h3>
+            </a>
+            <p>$199.00</p>
+            <a href="https://www.ravelcare.com" target="_blank">
+                <button>Add to Cart</button>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Clear Glow | Introduction to E-Commerce</p>
+</footer>
+
+<script>
+setTimeout(function(){
+    document.getElementById("welcome-screen").style.display = "none";
+}, 4500);
+
+function searchItems() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+
+    let items = document.querySelectorAll(".product, .category");
+
+    items.forEach(function(item){
+        let text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
